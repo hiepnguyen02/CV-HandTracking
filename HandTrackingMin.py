@@ -16,6 +16,11 @@ while True:
     # print(results.multi_hand_landmarks)
     if results.multi_hand_landmarks:
         for landLms in results.multi_hand_landmarks:
+            for id, lm in enumerate(landLms.landmark):
+
+                h, w, c = img.shape
+                cx, cy = int(lm.x * w), int(lm.y * h)
+
             mpDraw.draw_landmarks(img, landLms, mpHands.HAND_CONNECTIONS,
                                   mpDraw.DrawingSpec(color=(245, 117, 66), thickness=2, circle_radius=2),
                                   mpDraw.DrawingSpec(color=(245, 66, 230), thickness=2, circle_radius=2))
